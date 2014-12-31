@@ -6,7 +6,6 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
-
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -82,6 +81,8 @@ source $ZSH/oh-my-zsh.sh
 alias c="clear"
 alias node="node --harmony"
 alias n="node "
+alias gs="git status"
+alias gc="git commit"
 # alias j="autojump"
 export NVM_DIR="/Users/dongbinghui/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

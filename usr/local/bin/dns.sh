@@ -4,6 +4,7 @@ currentDNS=$(networksetup -getdnsservers Wi-Fi)
 
 GOOGLE="8.8.8.8 8.8.4.4"
 COMPANY="*******"
+HOME=""
 
 if [ $ssid = $COMPANY ];then 
   echo "set defalut dncs to normal"
