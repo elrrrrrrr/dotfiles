@@ -81,9 +81,9 @@ source $ZSH/oh-my-zsh.sh
 alias c="clear"
 alias node="node --harmony"
 alias n="node "
-alias gs="git status"
+alias gt="git status"
 alias gc="git commit"
-alias alirepo="git config user.name 'binghui.dbh' && git config user.email='binghui.dbh@alipay.com'"
+alias vim="/usr/local/bin/vim"
 # alias j="autojump"
 export NVM_DIR="/Users/dongbinghui/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
