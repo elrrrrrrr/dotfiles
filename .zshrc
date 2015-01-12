@@ -46,7 +46,6 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 plugins=(autojump)
-
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -87,3 +86,4 @@ alias vim="/usr/local/bin/vim"
 # alias j="autojump"
 export NVM_DIR="/Users/dongbinghui/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+codezen
