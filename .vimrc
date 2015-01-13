@@ -6,6 +6,7 @@ set number
 set rtp+=~/.vim/bundle/Vundle.vim
 set showmatch
 set cursorline
+set noswapfile
 
 set tabstop=2
 set expandtab
@@ -21,7 +22,7 @@ set ai
 set si
 let g:JSDocSnippetsMapping='<D-C>'
 call vundle#begin()
-map <C-k> :NERDTreeToggle<CR>
+nmap <C-k> :NERDTreeToggle<CR>
 
 map <C-d> :call JsBeautify()<cr>
 Plugin 'gmarik/Vundle.vim'
@@ -34,7 +35,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'SirVer/ultisnips'
 Plugin 'jordwalke/JSDocSnippets'
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-gitgutter'
 Plugin 'Shougo/neocomplete.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
