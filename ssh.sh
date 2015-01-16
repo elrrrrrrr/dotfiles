@@ -7,5 +7,13 @@ then
   echo "already add public key ! quit ...." 
 else   
   echo "add publick key ..."
-  echo $pubKey | ssh admin@$1 "cat >> ~/.ssh/authorized_keys"
+#  echo $pubKey | ssh admin@$1 "cat >> ~/.ssh/authorized_keys"
 fi 
+
+cmds=()
+cmds+='alias c="clear"'
+
+for i in "${cmds[@]}"
+do 
+  echo $i
+done  
