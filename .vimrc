@@ -1,5 +1,7 @@
-syntax on
-color monokai 
+syntax enable
+colorscheme monokai 
+set fileencodings=ucs-bom,utf-8,euc-cn,cp936,default,latin1
+let g:solarized_termcolors=256
 set nocompatible              " be iMproved, required
 filetype off                  " required
 set number
@@ -7,7 +9,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 set showmatch
 set cursorline
 set noswapfile
-
 set tabstop=2
 set expandtab
 set shiftwidth=2
@@ -20,14 +21,28 @@ set fdm=indent
 set foldlevelstart=99
 set ai
 set si
+
 let g:JSDocSnippetsMapping='<D-C>'
 call vundle#begin()
-nmap <C-k> :NERDTreeToggle<CR>
-
+map <C-b> :NERDTreeToggle<CR>
 map <C-d> :call JsBeautify()<cr>
+
+map <C-n> <C-w>w 
+map <C-h> <C-w>h 
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l 
+Plugin 'wavded/vim-stylus'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'eshion/vim-sync'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'ervandew/supertab'
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'maksimr/vim-jsbeautify'
+Plugin 'walm/jshint.vim'
+Plugin 'tpope/vim-surround'
 Plugin 'bling/vim-airline'
 Plugin 'mattn/emmet-vim'
 Plugin 'kien/ctrlp.vim'
@@ -35,8 +50,10 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'SirVer/ultisnips'
 Plugin 'jordwalke/JSDocSnippets'
-"Plugin 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'Shougo/neocomplete.vim'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -111,8 +128,6 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
