@@ -21,3 +21,5 @@ alias c="clear"
 
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
+
+export NODE_PATH=`npm -g root`
