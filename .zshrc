@@ -1,25 +1,26 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+# 加载 prezto
+source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+# 加载 bash_profile
+source "$HOME/.bash_profile"
 
-if [[ -s "$HOME/.bash_profile" ]]; then
-  source "$HOME/.bash_profile"
-fi
+# 加载 Z
+source `brew --prefix`/etc/profile.d/z.sh
 
-# Customize to your needs...
+# 加载 alias-tip
+source "$HOME/.zprezto/plugins/alias-tips/alias-tips.plugin.zsh"
+# alias-tip 提示语
+export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Cloud try : "
+
+# 配置快捷键
+alias vim="/usr/local/bin/vim"
 alias v="vim"
+alias h="vim -S ~/.vim/a\&c"
 alias c="clear"
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+# node 配置 nvm 太慢了
+export PATH=$PATH:$HOME/.nvm/versions/node/v4.1.1/bin
 
-export NODE_PATH=`npm -g root`
+# 设置默认编辑器
+export EDITOR=vim
+

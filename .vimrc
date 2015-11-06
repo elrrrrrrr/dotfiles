@@ -1,142 +1,134 @@
+" 语法高亮
 syntax enable
-colorscheme monokai 
+" 颜色主题
+colorscheme monokai
+" gbk文件编码支持
 set fileencodings=ucs-bom,utf-8,euc-cn,cp936,default,latin1
-let g:solarized_termcolors=256
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" 设置不兼容模式
+set nocompatible
+" 显示行号
 set number
+" 显示空格为·
+set listchars=tab:▸\ ,trail:·
+" 设置list
+set list
+" 设置vundle插件路径
 set rtp+=~/.vim/bundle/Vundle.vim
+" 展示search结果
 set showmatch
+" 高亮当前行
 set cursorline
+" 高亮搜索结果
+set hls
+" 不生成swap临时文件
 set noswapfile
+" 设置tab大小
 set tabstop=2
+" tab缩进
 set expandtab
+" 设置shift大小
 set shiftwidth=2
-set autoread
-set helplang=cn
-set cc=80
+" 自动同步文件
+set ar
+" 命令行补全
 set wildmenu
+" 命令行补全方式
 set wildmode=list:longest,full
+" 设置缩进方式
 set fdm=indent
 set foldlevelstart=99
+" 自动缩进
 set ai
+" 智能缩进
 set si
+" 全屏打开help
+set helpheight=99999
+" 鼠标拖动
+set mouse=a
+set ttymouse=xterm2
 
-let g:JSDocSnippetsMapping='<D-C>'
 call vundle#begin()
-map <C-b> :NERDTreeToggle<CR>
-map <C-d> :call JsBeautify()<cr>
 
-map <C-n> <C-w>w 
-map <C-h> <C-w>h 
+" 自定义快捷键
+map <C-n> :NERDTreeFind<CR>
+map <C-m> :NERDTreeToggle<CR>
+map <C-d> :JsDoc<CR>
+
 map <C-j> <C-w>j
 map <C-k> <C-w>k
-map <C-l> <C-w>l 
-Plugin 'wavded/vim-stylus'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'eshion/vim-sync'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'ervandew/supertab'
+map <C-h> <C-w>h
+map <C-l> <C-w>l
+
+map <leader>de :TernDef<CR>
+map <leader>dep :TernDefPreview<CR>
+map <leader>des :TernDefSplit<CR>
+map <leader>det :TernDefTab<CR>
+
+map <leader>do :TernDoc<CR>
+map <leader>dob :TernDocBrowse<CR>
+
+map <leader>tt :TernType<CR>
+map <leader>tr :TernRefs<CR>
+
+" 插件列表
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'asins/vimcdoc'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'gmarik/Vundle.vim'
+Plugin 'marijnh/tern_for_vim'
 Plugin 'heavenshell/vim-jsdoc'
-Plugin 'maksimr/vim-jsbeautify'
-Plugin 'walm/jshint.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'bling/vim-airline'
 Plugin 'mattn/emmet-vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jelera/vim-javascript-syntax'
-Plugin 'SirVer/ultisnips'
-Plugin 'jordwalke/JSDocSnippets'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'Shougo/neocomplete.vim'
+Plugin 'lepture/vim-velocity'
+Plugin 'scrooloose/syntastic'
+Plugin 'mtth/scratch.vim'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" 代码风格配置
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_ignore_files = ['[^\.js]$']
+let g:syntastic_javascript_checkers = []
+autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') !=# '' ? ['eslint'] : []
 
-"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+" JSdoc 配置
+let g:jsdoc_additional_descriptions = 1
+let g:jsdoc_allow_input_prompt = 1
+let g:jsdoc_return = 1
+let g:jsdoc_access_descriptions = 1
+let g:jsdoc_underscore_private = 1
+let g:jsdoc_allow_shorthand = 1
 
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+" 自动补全配置
+let g:tern_show_argument_hints = 'on_hold'
+let g:scratch_top = 0
+set completeopt=menu,menuone
 
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+" YCM 配置
+let g:ycm_autoclose_preview_window_after_completion = 0
 
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
+" CTRL-P 配置
+set wildignore+=*/.git/*,*/.svn/*,node_modules/*,
+let g:ctrlp_use_caching = 1
+let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+let g:ctrlp_clear_cache_on_exit = 1
+let g:ctrlp_custom_ignore = {
+  \'dir':  '\v[\/](node_modules|spm_modules|coverage|app/proxy)'
+\}
 
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-"function! s:my_cr_function()
-"  return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-"endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
-
-" For cursor moving in insert mode(Not recommended)
-"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
-" Or set this.
-"let g:neocomplete#enable_cursor_hold_i = 1
-" Or set this.
-"let g:neocomplete#enable_insert_char_pre = 1
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
