@@ -17,9 +17,11 @@ alias vim="/usr/local/bin/vim"
 alias v="vim"
 alias h="vim -S ~/.vim/a\&c"
 alias c="clear"
+alias t="tmux"
+alias ta="tmux attach"
 
 # node 配置 nvm 太慢了
-export PATH=$PATH:$HOME/.nvm/versions/node/v4.1.1/bin
+export PATH=$PATH:`brew --prefix nvm`/versions/node/v4.2.2/bin
 
 # 设置默认编辑器
 export EDITOR=vim

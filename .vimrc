@@ -1,7 +1,7 @@
 " 语法高亮
 syntax enable
 " 颜色主题
-colorscheme monokai
+colorscheme molokai
 " gbk文件编码支持
 set fileencodings=ucs-bom,utf-8,euc-cn,cp936,default,latin1
 " 设置不兼容模式
@@ -72,6 +72,7 @@ map <leader>tr :TernRefs<CR>
 
 " 插件列表
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'zenbro/mirror.vim'
 Plugin 'asins/vimcdoc'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'gmarik/Vundle.vim'
@@ -90,6 +91,10 @@ Plugin 'mtth/scratch.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-fugitive'
+Plugin 'mileszs/ack.vim'
+Plugin 'dyng/ctrlsf.vim'
+Plugin 'rking/ag.vim'
+
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -127,7 +132,6 @@ let g:ycm_autoclose_preview_window_after_completion = 0
 set wildignore+=*/.git/*,*/.svn/*,node_modules/*,
 let g:ctrlp_use_caching = 1
 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
-let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_custom_ignore = {
   \'dir':  '\v[\/](node_modules|spm_modules|coverage|app/proxy)'
 \}
