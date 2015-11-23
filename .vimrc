@@ -1,5 +1,3 @@
-" 语法高亮
-syntax enable
 " 颜色主题
 colorscheme molokai
 " gbk文件编码支持
@@ -9,11 +7,9 @@ set nocompatible
 " 显示行号
 set number
 " 显示空格为·
-set listchars=tab:▸\ ,trail:·
+"set listchars=tab:▸\ ,trail:·
 " 设置list
-set list
-" 设置vundle插件路径
-set rtp+=~/.vim/bundle/Vundle.vim
+"set list
 " 展示search结果
 set showmatch
 " 高亮当前行
@@ -28,8 +24,6 @@ set tabstop=2
 set expandtab
 " 设置shift大小
 set shiftwidth=2
-" 自动同步文件
-set ar
 " 命令行补全
 set wildmenu
 " 命令行补全方式
@@ -46,8 +40,6 @@ set helpheight=99999
 " 鼠标拖动
 set mouse=a
 set ttymouse=xterm2
-
-call vundle#begin()
 
 " 自定义快捷键
 map <C-n> :NERDTreeFind<CR>
@@ -70,34 +62,38 @@ map <leader>dob :TernDocBrowse<CR>
 map <leader>tt :TernType<CR>
 map <leader>tr :TernRefs<CR>
 
+call plug#begin('~/.vim/plugged')
+
 " 插件列表
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'zenbro/mirror.vim'
-Plugin 'asins/vimcdoc'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'gmarik/Vundle.vim'
-Plugin 'marijnh/tern_for_vim'
-Plugin 'heavenshell/vim-jsdoc'
-Plugin 'tpope/vim-surround'
-Plugin 'bling/vim-airline'
-Plugin 'mattn/emmet-vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'lepture/vim-velocity'
-Plugin 'scrooloose/syntastic'
-Plugin 'mtth/scratch.vim'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'tpope/vim-fugitive'
-Plugin 'mileszs/ack.vim'
-Plugin 'dyng/ctrlsf.vim'
-Plugin 'rking/ag.vim'
+Plug 'tpope/vim-sensible'
+Plug 'jiangmiao/auto-pairs'
+Plug 'asins/vimcdoc'
+Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
+Plug 'marijnh/tern_for_vim', {'for': ['javascript', 'json']}
+Plug 'heavenshell/vim-jsdoc', {'for': ['javascript', 'json']}
+Plug 'tpope/vim-surround'
+Plug 'bling/vim-airline'
+Plug 'edkolev/tmuxline.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
+Plug 'lepture/vim-velocity'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/syntastic', {'for': 'javascript'}
+Plug 'tomtom/tcomment_vim'
+Plug 'Xuyuanp/nerdtree-git-plugin', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
+Plug 'dyng/ctrlsf.vim'
+Plug 'rking/ag.vim'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
+call plug#end()
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+" snippets 配置
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<C-l>"
+let g:UltiSnipsJumpBackwardTrigger="<C-h>"
+let g:UltiSnipsEditSplit="vertical"
 
 " 代码风格配置
 set statusline+=%#warningmsg#
@@ -109,8 +105,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ignore_files = ['[^\.js]$']
-let g:syntastic_javascript_checkers = []
-autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') !=# '' ? ['eslint'] : []
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'node_modules/.bin/eslint'
+" autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') !=# '' ? ['eslint'] : []
 
 " JSdoc 配置
 let g:jsdoc_additional_descriptions = 1
@@ -136,3 +133,15 @@ let g:ctrlp_custom_ignore = {
   \'dir':  '\v[\/](node_modules|spm_modules|coverage|app/proxy)'
 \}
 
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
