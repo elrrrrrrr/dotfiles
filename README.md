@@ -16,7 +16,7 @@
 
 #### 对应包管理器
 
-* vim vundle
-* zsh zprezto
-* tmux tpm
+* vim [vim-plug](https://github.com/junegunn/vim-plug)
+* zsh [zprezto](https://github.com/sorin-ionescu/prezto)
+* tmux [tpm](https://github.com/tmux-plugins/tpm)
 
