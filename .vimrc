@@ -6,10 +6,6 @@ set fileencodings=ucs-bom,utf-8,euc-cn,cp936,default,latin1
 set nocompatible
 " 显示行号
 set number
-" 显示空格为·
-"set listchars=tab:▸\ ,trail:·
-" 设置list
-"set list
 " 展示search结果
 set showmatch
 " 高亮当前行
@@ -40,11 +36,16 @@ set helpheight=99999
 " 鼠标拖动
 set mouse=a
 set ttymouse=xterm2
+" 快速滑动
+set tf
+" lazyredraw
+set lz
 
 " 自定义快捷键
 map <C-n> :NERDTreeFind<CR>
-map <C-m> :NERDTreeToggle<CR>
+map <C-t> :NERDTreeToggle<CR>
 map <C-d> :JsDoc<CR>
+map U  :UndotreeToggle<CR>
 
 map <C-j> <C-w>j
 map <C-k> <C-w>k
@@ -66,26 +67,32 @@ call plug#begin('~/.vim/plugged')
 
 " 插件列表
 Plug 'tpope/vim-sensible'
-Plug 'jiangmiao/auto-pairs'
 Plug 'asins/vimcdoc'
+Plug 'jiangmiao/auto-pairs'
 Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
 Plug 'marijnh/tern_for_vim', {'for': ['javascript', 'json']}
 Plug 'heavenshell/vim-jsdoc', {'for': ['javascript', 'json']}
+Plug 'othree/yajs.vim', {'for': ['javascript']}
+Plug 'scrooloose/syntastic', {'for': 'javascript'}
 Plug 'tpope/vim-surround'
 Plug 'bling/vim-airline'
 Plug 'edkolev/tmuxline.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
 Plug 'lepture/vim-velocity'
-Plug 'jelera/vim-javascript-syntax'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/syntastic', {'for': 'javascript'}
-Plug 'tomtom/tcomment_vim'
 Plug 'Xuyuanp/nerdtree-git-plugin', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
+Plug 'tomtom/tcomment_vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'rking/ag.vim'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'junegunn/vim-xmark', {'do': 'make', 'for': 'markdown'}
+Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/vim-pseudocl'
+Plug 'junegunn/vim-fnr'
+Plug 'MattesGroeger/vim-bookmarks'
+Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 
 call plug#end()
 
@@ -137,7 +144,7 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-" unicode symbols
+" AIRLINE 状态栏标记
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
@@ -145,3 +152,6 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+
+" UNDOTREE 插件配置
+let g:undotree_WindowLayout = 2
