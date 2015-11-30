@@ -12,8 +12,11 @@ zstyle ':prezto:load' pmodule \
   'git' \
   'directory' \
   'spectrum' \
+  'osx' \
+  'fasd' \
   'utility' \
   'completion' \
+  'tmux' \
   'prompt'
 
 # 输入采用 vi 快捷键

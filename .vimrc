@@ -89,10 +89,9 @@ Plug 'rking/ag.vim'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-xmark', {'do': 'make', 'for': 'markdown'}
 Plug 'junegunn/vim-peekaboo'
-Plug 'junegunn/vim-pseudocl'
-Plug 'junegunn/vim-fnr'
-Plug 'MattesGroeger/vim-bookmarks'
+Plug 'kshenoy/vim-signature'
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
+Plug 't9md/vim-smalls'
 
 call plug#end()
 
@@ -155,3 +154,9 @@ let g:airline_symbols.linenr = ''
 
 " UNDOTREE 插件配置
 let g:undotree_WindowLayout = 2
+
+" SMALL 插件配置
+nmap s <Plug>(smalls)
+omap s <Plug>(smalls)
+xmap s <Plug>(smalls)
+
