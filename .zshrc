@@ -12,7 +12,6 @@ export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Cloud try : "
 # 配置快捷键
 alias vim="/usr/local/bin/vim"
 alias v="vim"
-alias c="clear"
 
 # node 配置 nvm 太慢了
 export PATH=$PATH:`brew --prefix nvm`/versions/node/v4.2.2/bin

@@ -133,8 +133,6 @@ let g:ycm_autoclose_preview_window_after_completion = 0
 
 " CTRL-P 配置
 set wildignore+=*/.git/*,*/.svn/*,node_modules/*,
-let g:ctrlp_use_caching = 1
-let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 let g:ctrlp_custom_ignore = {
   \'dir':  '\v[\/](node_modules|spm_modules|coverage|app/proxy)'
 \}
@@ -153,7 +151,7 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
 " UNDOTREE 插件配置
-let g:undotree_WindowLayout = 2
+let g:undotree_WindowLayout = 3
 
 " SMALL 插件配置
 nmap s <Plug>(smalls)
