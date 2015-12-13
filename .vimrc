@@ -132,6 +132,7 @@ set completeopt=menu,menuone
 let g:ycm_autoclose_preview_window_after_completion = 0
 
 " CTRL-P 配置
+let g:ctrlp_show_hidden = 1
 set wildignore+=*/.git/*,*/.svn/*,node_modules/*,
 let g:ctrlp_custom_ignore = {
   \'dir':  '\v[\/](node_modules|spm_modules|coverage|app/proxy)'
