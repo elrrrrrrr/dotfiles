@@ -15,8 +15,10 @@ alias v="vim"
 
 # node 配置 nvm 太慢了
 export PATH=$PATH:`brew --prefix nvm`/versions/node/v4.2.2/bin
+export NODE_PATH=/usr/local/Cellar/nvm/0.26.1/versions/node/v4.2.2/lib/node_modules
 
 # 设置默认编辑器
 export EDITOR=vim
 
 eval "$(fasd --init auto)"
+stty -ixon

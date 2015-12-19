@@ -1,12 +1,10 @@
-" 颜色主题
-colorscheme molokai
 " gbk文件编码支持
 set fileencodings=ucs-bom,utf-8,euc-cn,cp936,default,latin1
 " 设置不兼容模式
 set nocompatible
 " 显示行号
 set number
-" 展示search结果
+" 高亮括号匹配
 set showmatch
 " 高亮当前行
 set cursorline
@@ -44,13 +42,18 @@ set lz
 " 自定义快捷键
 map <C-n> :NERDTreeFind<CR>
 map <C-t> :NERDTreeToggle<CR>
-map <C-d> :JsDoc<CR>
+map <C-m> :JsDoc<CR>
 map U  :UndotreeToggle<CR>
 
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-h> <C-w>h
 map <C-l> <C-w>l
+
+nmap <C-s> :w<CR>
+imap <C-s> <Esc>:w<CR>a
+map <C-t> :tabnew<CR>
+map <C-q> :q!<CR>
 
 map <leader>de :TernDef<CR>
 map <leader>dep :TernDefPreview<CR>
@@ -92,8 +95,13 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'kshenoy/vim-signature'
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 't9md/vim-smalls'
+Plug 'junegunn/seoul256.vim'
 
 call plug#end()
+
+" seoul256 主题配置
+let g:seoul256_background = 233
+colo seoul256
 
 " snippets 配置
 let g:UltiSnipsExpandTrigger="<C-j>"
@@ -121,7 +129,8 @@ let g:jsdoc_allow_input_prompt = 1
 let g:jsdoc_return = 1
 let g:jsdoc_access_descriptions = 1
 let g:jsdoc_underscore_private = 1
-let g:jsdoc_allow_shorthand = 1
+let g:jsdoc_enable_es6 = 1
+
 
 " 自动补全配置
 let g:tern_show_argument_hints = 'on_hold'
@@ -155,7 +164,5 @@ let g:airline_symbols.linenr = ''
 let g:undotree_WindowLayout = 3
 
 " SMALL 插件配置
-nmap s <Plug>(smalls)
-omap s <Plug>(smalls)
-xmap s <Plug>(smalls)
+map s <Plug>(smalls)
 
