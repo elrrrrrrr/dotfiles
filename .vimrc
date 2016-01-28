@@ -1,4 +1,4 @@
-" gbk文件编码支持
+"j gbk文件编码支持
 set fileencodings=ucs-bom,utf-8,euc-cn,cp936,default,latin1
 " 设置不兼容模式
 set nocompatible
@@ -37,12 +37,13 @@ set ttymouse=xterm2
 " 快速滑动
 set tf
 " lazyredraw
-set lz
 
 " 自定义快捷键
-map <C-n> :NERDTreeFind<CR>
-map <C-t> :NERDTreeToggle<CR>
-map <C-m> :JsDoc<CR>
+let mapleader = " "
+
+map <leader>n :NERDTreeFind<CR>
+map <leader>t :NERDTreeToggle<CR>
+map <leader>m :JsDoc<CR>
 map U  :UndotreeToggle<CR>
 
 map <C-j> <C-w>j
@@ -50,10 +51,9 @@ map <C-k> <C-w>k
 map <C-h> <C-w>h
 map <C-l> <C-w>l
 
-nmap <C-s> :w<CR>
-imap <C-s> <Esc>:w<CR>a
-map <C-t> :tabnew<CR>
 map <C-q> :q!<CR>
+imap <C-y>  <Esc>:redo<CR>
+nmap F :CtrlSF
 
 map <leader>de :TernDef<CR>
 map <leader>dep :TernDefPreview<CR>
@@ -73,12 +73,13 @@ Plug 'tpope/vim-sensible'
 Plug 'asins/vimcdoc'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
-Plug 'marijnh/tern_for_vim', {'for': ['javascript', 'json']}
-Plug 'heavenshell/vim-jsdoc', {'for': ['javascript', 'json']}
+Plug 'marijnh/tern_for_vim', {'for': ['javascript']}
+Plug 'heavenshell/vim-jsdoc', {'for': ['javascript']}
 Plug 'othree/yajs.vim', {'for': ['javascript']}
 Plug 'scrooloose/syntastic', {'for': 'javascript'}
 Plug 'tpope/vim-surround'
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
@@ -96,6 +97,8 @@ Plug 'kshenoy/vim-signature'
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 't9md/vim-smalls'
 Plug 'junegunn/seoul256.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'elrrrrrrr/qin-sync'
 
 call plug#end()
 
@@ -121,7 +124,6 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_ignore_files = ['[^\.js]$']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = 'node_modules/.bin/eslint'
-" autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') !=# '' ? ['eslint'] : []
 
 " JSdoc 配置
 let g:jsdoc_additional_descriptions = 1
@@ -144,7 +146,7 @@ let g:ycm_autoclose_preview_window_after_completion = 0
 let g:ctrlp_show_hidden = 1
 set wildignore+=*/.git/*,*/.svn/*,node_modules/*,
 let g:ctrlp_custom_ignore = {
-  \'dir':  '\v[\/](node_modules|spm_modules|coverage|app/proxy)'
+  \'dir':  '\v[\/](coverage|app/proxy)'
 \}
 
 if !exists('g:airline_symbols')
@@ -158,11 +160,10 @@ let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+let g:airline_symbols.linenr = '␤'
 
 " UNDOTREE 插件配置
 let g:undotree_WindowLayout = 3
 
 " SMALL 插件配置
 map s <Plug>(smalls)
-

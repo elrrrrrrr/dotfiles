@@ -14,11 +14,15 @@ alias vim="/usr/local/bin/vim"
 alias v="vim"
 
 # node 配置 nvm 太慢了
-export PATH=$PATH:`brew --prefix nvm`/versions/node/v4.2.2/bin
-export NODE_PATH=/usr/local/Cellar/nvm/0.26.1/versions/node/v4.2.2/lib/node_modules
+export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/dist
+source $(brew --prefix nvm)/nvm.sh
 
 # 设置默认编辑器
 export EDITOR=vim
 
 eval "$(fasd --init auto)"
 stty -ixon
+
+export NVM_DIR="$HOME/.nvm"
+
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
