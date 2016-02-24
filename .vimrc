@@ -35,15 +35,17 @@ set helpheight=99999
 set mouse=a
 set ttymouse=xterm2
 " 快速滑动
-set tf
-" lazyredraw
 
 " 自定义快捷键
 let mapleader = " "
 
+imap jj <Esc>
 map <leader>n :NERDTreeFind<CR>
 map <leader>t :NERDTreeToggle<CR>
 map <leader>m :JsDoc<CR>
+map <leader>q :q!<CR>
+
+nmap <leader>F :CtrlSF
 map U  :UndotreeToggle<CR>
 
 map <C-j> <C-w>j
@@ -51,9 +53,7 @@ map <C-k> <C-w>k
 map <C-h> <C-w>h
 map <C-l> <C-w>l
 
-map <C-q> :q!<CR>
 imap <C-y>  <Esc>:redo<CR>
-nmap F :CtrlSF
 
 map <leader>de :TernDef<CR>
 map <leader>dep :TernDefPreview<CR>
@@ -98,6 +98,7 @@ Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 't9md/vim-smalls'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'dahu/LearnVim'
 Plug 'elrrrrrrr/qin-sync'
 
 call plug#end()
@@ -161,6 +162,7 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.whitespace = 'Ξ'
 
 " UNDOTREE 插件配置
 let g:undotree_WindowLayout = 3
