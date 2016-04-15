@@ -154,6 +154,12 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
+" AIRLINE 主题
+let g:airline_theme = 'bubblegum'
+
+let g:airline_section_b = '%{airline#util#wrap(airline#extensions#branch#get_head(),0)}'
+
+
 " AIRLINE 状态栏标记
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -169,3 +175,14 @@ let g:undotree_WindowLayout = 3
 
 " SMALL 插件配置
 map s <Plug>(smalls)
+
+let g:tmuxline_preset = {
+      \'win'    : ['#I', '#W'],
+      \'cwin'    : ['#I', '#W'],
+      \'x'    : '#(ipconfig getifaddr en0)',
+      \'y'    : ['%D'],
+      \'z'    : '%R',
+      \'options' : {
+      \'status-justify': 'left'}
+      \}
+

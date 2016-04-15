@@ -1,9 +1,6 @@
 # 加载 prezto
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 
-# 加载 bash_profile
-source "$HOME/.bash_profile"
-
 # 加载 alias-tip
 source "$HOME/.zprezto/plugins/alias-tips/alias-tips.plugin.zsh"
 # alias-tip 提示语
