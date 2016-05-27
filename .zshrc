@@ -10,6 +10,9 @@ export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Cloud try : "
 alias vim="/usr/local/bin/vim"
 alias v="vim"
 alias vp="vim package.json"
+alias c="clear"
+alias gssh="luit -encoding gbk ssh"
+alias h="tldr"
 
 # node 配置 nvm 太慢了
 export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/dist

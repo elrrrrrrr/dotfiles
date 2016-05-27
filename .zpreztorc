@@ -9,6 +9,7 @@ zstyle ':prezto:load' pmodule \
   'editor' \
   'history' \
   'history-substring-search' \
+  'syntax-highlighting' \
   'git' \
   'directory' \
   'spectrum' \

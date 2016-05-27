@@ -98,9 +98,10 @@ Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 't9md/vim-smalls'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'dahu/LearnVim'
 Plug 'elrrrrrrr/qin-sync'
-
+Plug 'dhruvasagar/vim-dotoo'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 " seoul256 主题配置
@@ -173,8 +174,11 @@ let g:airline_symbols.whitespace = 'Ξ'
 " UNDOTREE 插件配置
 let g:undotree_WindowLayout = 3
 
-" SMALL 插件配置
-map s <Plug>(smalls)
+" EASY_MOTION 插件配置
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
 
 let g:tmuxline_preset = {
       \'win'    : ['#I', '#W'],
@@ -185,4 +189,5 @@ let g:tmuxline_preset = {
       \'options' : {
       \'status-justify': 'left'}
       \}
+
 
