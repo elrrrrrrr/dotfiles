@@ -52,6 +52,7 @@ cmap <C-h> <S-left>
 imap jj <Esc>
 map <leader>n :NERDTreeFind<CR>
 map <leader>t :NERDTreeToggle<CR>
+map <leader>c :NERDTreeCWD<CR>
 map <leader>m :JsDoc<CR>
 map <leader>q :q!<CR>
 
@@ -64,17 +65,6 @@ map <C-h> <C-w>h
 map <C-l> <C-w>l
 
 imap <C-y>  <Esc>:redo<CR>
-
-map <leader>de :TernDef<CR>
-map <leader>dep :TernDefPreview<CR>
-map <leader>des :TernDefSplit<CR>
-map <leader>det :TernDefTab<CR>
-
-map <leader>do :TernDoc<CR>
-map <leader>dob :TernDocBrowse<CR>
-
-map <leader>tt :TernType<CR>
-map <leader>tr :TernRefs<CR>
 
 call plug#begin('~/.vim/plugged')
 
@@ -91,11 +81,11 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
+Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeCWD']}
 Plug 'lepture/vim-velocity'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'Xuyuanp/nerdtree-git-plugin', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
+Plug 'Xuyuanp/nerdtree-git-plugin', {'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeCWD']}
 Plug 'tomtom/tcomment_vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'rking/ag.vim'
@@ -113,7 +103,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'easymotion/vim-easymotion'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'rizzatti/dash.vim'
-Plug 'yonchu/accelerated-smooth-scroll'
 Plug 'tpope/vim-repeat'
 call plug#end()
 
@@ -205,3 +194,19 @@ let g:tmuxline_preset = {
 
 " neovim也使用 en_US
 lan en_US
+
+" fasd 快速切换路径
+command! -nargs=* Z :call Z(<f-args>)
+function! Z(...)
+  let cmd = 'fasd -d -e printf'
+  for arg in a:000
+    let cmd = cmd . ' ' . arg
+  endfor
+  let path = system(cmd)
+  if isdirectory(path)
+    echo path
+    exec 'cd ' . path
+  endif
+endfunction
+
+nmap <leader>z :Z 
