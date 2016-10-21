@@ -203,4 +203,5 @@ let g:tmuxline_preset = {
       \'status-justify': 'left'}
       \}
 
-
+" neovim也使用 en_US
+lan en_US
