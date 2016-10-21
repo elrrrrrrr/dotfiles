@@ -1,4 +1,4 @@
-"j gbk文件编码支持
+" gbk文件编码支持
 set fileencodings=ucs-bom,utf-8,euc-cn,cp936,default,latin1
 " 设置不兼容模式
 set nocompatible
@@ -38,6 +38,9 @@ if !has('nvim')
 endif
 " 快速滑动
 set ttyfast
+" 高亮特殊字符
+set list
+set listchars=tab:>-,trail:-,extends:>,precedes:<
 
 " 自定义快捷键
 map ; :
@@ -80,7 +83,6 @@ Plug 'tpope/vim-sensible'
 Plug 'asins/vimcdoc'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
-Plug 'marijnh/tern_for_vim', {'for': ['javascript']}
 Plug 'heavenshell/vim-jsdoc', {'for': ['javascript']}
 Plug 'othree/yajs.vim', {'for': ['javascript']}
 Plug 'scrooloose/syntastic', {'for': 'javascript'}
@@ -105,10 +107,14 @@ Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 't9md/vim-smalls'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'elrrrrrrr/qin-sync'
+Plug '~/code/github/qin-sync'
 Plug 'dhruvasagar/vim-dotoo'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'easymotion/vim-easymotion'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'rizzatti/dash.vim'
+Plug 'yonchu/accelerated-smooth-scroll'
+Plug 'tpope/vim-repeat'
 call plug#end()
 
 " seoul256 主题配置
@@ -144,7 +150,6 @@ let g:jsdoc_enable_es6 = 1
 
 
 " 自动补全配置
-let g:tern_show_argument_hints = 'on_hold'
 let g:scratch_top = 0
 set completeopt=menu,menuone
 
