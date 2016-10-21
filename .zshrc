@@ -6,10 +6,14 @@ source "$HOME/.zprezto/plugins/alias-tips/alias-tips.plugin.zsh"
 # alias-tip 提示语
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Cloud try : "
 
+export TERM=xterm-256color
+
 # 配置快捷键
 alias vim="/usr/local/bin/vim"
 alias v="vim"
-alias vp="vim package.json"
+alias n="nvim"
+alias vp="v package.json"
+alias np="n package.json"
 alias c="clear"
 alias gssh="luit -encoding gbk ssh"
 alias h="tldr"

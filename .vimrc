@@ -33,11 +33,18 @@ set si
 set helpheight=99999
 " 鼠标拖动
 set mouse=a
-set ttymouse=xterm2
+if !has('nvim')
+  set ttymouse=xterm2
+endif
 " 快速滑动
+set ttyfast
 
 " 自定义快捷键
+map ; :
 let mapleader = " "
+cmap <C-a> <home>
+cmap <C-h> <S-left>
+cmap <C-h> <S-left>
 
 imap jj <Esc>
 map <leader>n :NERDTreeFind<CR>
@@ -45,8 +52,8 @@ map <leader>t :NERDTreeToggle<CR>
 map <leader>m :JsDoc<CR>
 map <leader>q :q!<CR>
 
-nmap <leader>F :CtrlSF
-map U  :UndotreeToggle<CR>
+nmap <leader>f :CtrlSF 
+nmap <silent>U :UndotreeToggle<CR>
 
 map <C-j> <C-w>j
 map <C-k> <C-w>k
@@ -146,6 +153,7 @@ let g:ycm_autoclose_preview_window_after_completion = 0
 
 " CTRL-P 配置
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_map = '<Leader>p'
 set wildignore+=*/.git/*,*/.svn/*,node_modules/*,
 let g:ctrlp_custom_ignore = {
   \'dir':  '\v[\/](coverage|app/proxy)'
