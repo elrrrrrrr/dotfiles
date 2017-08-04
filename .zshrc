@@ -1,9 +1,13 @@
-# 加载 prezto
+# # 加载 prezto
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-
-# 加载 alias-tip
+#
+# # 加载 alias-tip
 source "$HOME/.zprezto/plugins/alias-tips/alias-tips.plugin.zsh"
-# alias-tip 提示语
+# # alias-tip 提示语
+
+# source "$HOME/.zplug/init.zsh"
+# source "$HOME/.zplugrc"
+
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Cloud try : "
 
 export TERM=xterm-256color
@@ -29,5 +33,7 @@ eval "$(fasd --init auto)"
 stty -ixon
 
 export NVM_DIR="$HOME/.nvm"
+
+source "$HOME/.bash_profile"
 
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"

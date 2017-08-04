@@ -70,6 +70,7 @@ call plug#begin('~/.vim/plugged')
 
 " 插件列表
 Plug 'tpope/vim-sensible'
+Plug 'hotoo/pangu.vim'
 Plug 'asins/vimcdoc'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
@@ -104,6 +105,9 @@ Plug 'easymotion/vim-easymotion'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'rizzatti/dash.vim'
 Plug 'tpope/vim-repeat'
+Plug 'mitermayer/vim-prettier', {
+    \ 'do': 'tnpm install', 
+    \ 'for': ['javascript', 'css', 'less', 'scss'] }
 call plug#end()
 
 " seoul256 主题配置
@@ -150,7 +154,7 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_map = '<Leader>p'
 set wildignore+=*/.git/*,*/.svn/*,node_modules/*,
 let g:ctrlp_custom_ignore = {
-  \'dir':  '\v[\/](coverage|app/proxy)'
+  \'dir':  '\v[\/](coverage|app/proxy|app/src|_dist|_package|node_modules)'
 \}
 
 if !exists('g:airline_symbols')
@@ -181,6 +185,8 @@ map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
+nmap H gT
+nmap L gt
 
 let g:tmuxline_preset = {
       \'win'    : ['#I', '#W'],
@@ -210,3 +216,6 @@ function! Z(...)
 endfunction
 
 nmap <leader>z :Z 
+
+vmap qq y:%s`<C-R>"``g<left><left>
+set guitablabel=%N/\ %t\ %M
