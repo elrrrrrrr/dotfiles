@@ -1,8 +1,11 @@
+inclue () {
+  [[ -f "$1" ]] && source "$1"
+}
 # # 加载 prezto
-source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+inclue "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 #
 # # 加载 alias-tip
-source "$HOME/.zprezto/plugins/alias-tips/alias-tips.plugin.zsh"
+inclue "$HOME/.zprezto/plugins/alias-tips/alias-tips.plugin.zsh"
 # # alias-tip 提示语
 
 # source "$HOME/.zplug/init.zsh"
@@ -13,7 +16,7 @@ export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Cloud try : "
 export TERM=xterm-256color
 
 # 配置快捷键
-alias vim="/usr/local/bin/vim"
+[ -f /usr/local/bin/vim ] && alias vim="/usr/local/bin/vim"
 alias v="vim"
 alias n="nvim"
 alias vp="v package.json"
@@ -24,7 +27,10 @@ alias h="tldr"
 
 # node 配置 nvm 太慢了
 export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/dist
-source $(brew --prefix nvm)/nvm.sh
+which brew > /dev/null
+if [ "$?" -eq 0 ]; then
+  source $(brew --prefix nvm)/nvm.sh
+fi
 
 # 设置默认编辑器
 export EDITOR=vim
@@ -34,6 +40,6 @@ stty -ixon
 
 export NVM_DIR="$HOME/.nvm"
 
-source "$HOME/.bash_profile"
+inclue "$HOME/.bash_profile"
 
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
