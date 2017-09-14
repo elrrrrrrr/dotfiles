@@ -43,3 +43,5 @@ export NVM_DIR="$HOME/.nvm"
 inclue "$HOME/.bash_profile"
 
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

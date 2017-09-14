@@ -1,0 +1,242 @@
+.mermaid .label {
+  color: #333;
+}
+.mermaid .node circle,
+.mermaid .node ellipse,
+.mermaid .node polygon,
+.mermaid .node rect {
+  fill: #f7f7f7;
+  stroke: #d0d0d0;
+  stroke-width: 1px;
+}
+.mermaid .edgePath .path {
+  stroke: #333;
+}
+.mermaid .edgeLabel {
+  background-color: #e8e8e8;
+}
+.mermaid .cluster rect {
+  fill: #ffffde !important;
+  rx: 4 !important;
+  stroke: #aa3 !important;
+  stroke-width: 1px !important;
+}
+.mermaid .cluster text {
+  fill: #333;
+}
+.mermaid .actor {
+  stroke: #d0d0d0;
+  fill: #f7f7f7;
+}
+.mermaid text.actor {
+  fill: #000;
+  stroke: none;
+}
+.mermaid .actor-line {
+  stroke: grey;
+}
+.mermaid .messageLine0 {
+  marker-end: "url(#arrowhead)";
+}
+.mermaid .messageLine0,
+.mermaid .messageLine1 {
+  stroke-width: 1.5;
+  stroke-dasharray: "2 2";
+  stroke: #333;
+}
+.mermaid #arrowhead {
+  fill: #333;
+}
+.mermaid #crosshead path {
+  fill: #333 !important;
+  stroke: #333 !important;
+}
+.mermaid .messageText {
+  fill: #333;
+  stroke: none;
+}
+.mermaid .labelBox {
+  stroke: #d0d0d0;
+  fill: #f7f7f7;
+}
+.mermaid .labelText,
+.mermaid .loopText {
+  fill: #000;
+  stroke: none;
+}
+.mermaid .loopLine {
+  stroke-width: 2;
+  stroke-dasharray: "2 2";
+  marker-end: "url(#arrowhead)";
+  stroke: #d0d0d0;
+}
+.mermaid .note {
+  stroke: #e0ad4f;
+  fill: #fff4a7;
+}
+.mermaid .noteText {
+  fill: #000;
+  stroke: none;
+  font-family: trebuchet ms, verdana, arial;
+  font-size: 14px;
+}
+.mermaid .section {
+  stroke: none;
+  opacity: .2;
+}
+.mermaid .section0 {
+  fill: #dedede;
+}
+.mermaid .section2 {
+  fill: #fff969;
+}
+.mermaid .section1,
+.mermaid .section3 {
+  fill: #fff;
+  opacity: .2;
+}
+.mermaid .sectionTitle0,
+.mermaid .sectionTitle1,
+.mermaid .sectionTitle2,
+.mermaid .sectionTitle3 {
+  fill: #333;
+}
+.mermaid .sectionTitle {
+  text-anchor: start;
+  font-size: 11px;
+  text-height: 14px;
+}
+.mermaid .grid .tick {
+  stroke: #d3d3d3;
+  opacity: .3;
+  shape-rendering: crispEdges;
+}
+.mermaid .grid path {
+  stroke-width: 0;
+}
+.mermaid .today {
+  fill: none;
+  stroke: red;
+  stroke-width: 2px;
+}
+.mermaid .task {
+  stroke-width: 2;
+}
+.mermaid .taskText {
+  text-anchor: middle;
+  font-size: 11px;
+}
+.mermaid .taskTextOutsideRight {
+  fill: #000;
+  text-anchor: start;
+  font-size: 11px;
+}
+.mermaid .taskTextOutsideLeft {
+  fill: #000;
+  text-anchor: end;
+  font-size: 11px;
+}
+.mermaid .taskText0,
+.mermaid .taskText1,
+.mermaid .taskText2,
+.mermaid .taskText3 {
+  fill: #fff;
+}
+.mermaid .task0,
+.mermaid .task1,
+.mermaid .task2,
+.mermaid .task3 {
+  fill: #52b565;
+  stroke: #2c8a3e;
+}
+.mermaid .taskTextOutside0,
+.mermaid .taskTextOutside1,
+.mermaid .taskTextOutside2,
+.mermaid .taskTextOutside3 {
+  fill: #000;
+}
+.mermaid .active0,
+.mermaid .active1,
+.mermaid .active2,
+.mermaid .active3 {
+  fill: #a2e4af;
+  stroke: #2c8a3e;
+}
+.mermaid .activeText0,
+.mermaid .activeText1,
+.mermaid .activeText2,
+.mermaid .activeText3 {
+  fill: #000 !important;
+}
+.mermaid .done0,
+.mermaid .done1,
+.mermaid .done2,
+.mermaid .done3 {
+  stroke: #a8c1a8;
+  fill: #f3fbf3;
+  stroke-width: 1px;
+}
+.mermaid .doneText0,
+.mermaid .doneText1,
+.mermaid .doneText2,
+.mermaid .doneText3 {
+  fill: #000 !important;
+}
+.mermaid .crit0,
+.mermaid .crit1,
+.mermaid .crit2,
+.mermaid .crit3 {
+  stroke: #d27a2f;
+  fill: #ff8d4e;
+  stroke-width: 2;
+}
+.mermaid .activeCrit0,
+.mermaid .activeCrit1,
+.mermaid .activeCrit2,
+.mermaid .activeCrit3 {
+  stroke: #ff8d45;
+  fill: #ffdac3;
+  stroke-width: 2;
+}
+.mermaid .doneCrit0,
+.mermaid .doneCrit1,
+.mermaid .doneCrit2,
+.mermaid .doneCrit3 {
+  stroke: #ff8d45;
+  fill: #fff8f4;
+  stroke-width: 2;
+  cursor: pointer;
+  shape-rendering: crispEdges;
+}
+.mermaid .activeCritText0,
+.mermaid .activeCritText1,
+.mermaid .activeCritText2,
+.mermaid .activeCritText3,
+.mermaid .doneCritText0,
+.mermaid .doneCritText1,
+.mermaid .doneCritText2,
+.mermaid .doneCritText3 {
+  fill: #000 !important;
+}
+.mermaid .titleText {
+  text-anchor: middle;
+  font-size: 18px;
+  fill: #000;
+}
+.mermaid .node text {
+  font-family: trebuchet ms, verdana, arial;
+  font-size: 14px;
+}
+div.mermaidTooltip {
+  position: absolute;
+  text-align: center;
+  max-width: 200px;
+  padding: 2px;
+  font-family: trebuchet ms, verdana, arial;
+  font-size: 12px;
+  background: #ffffde;
+  border: 1px solid #aa3;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 100;
+}

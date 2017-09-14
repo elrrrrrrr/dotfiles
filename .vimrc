@@ -42,6 +42,8 @@ set ttyfast
 set list
 set listchars=tab:>-,trail:-,extends:>,precedes:<
 
+set suffixesadd+=.vue,.js,.jsx
+
 " 自定义快捷键
 map ; :
 let mapleader = " "
@@ -53,10 +55,20 @@ imap jj <Esc>
 map <leader>n :NERDTreeFind<CR>
 map <leader>t :NERDTreeToggle<CR>
 map <leader>c :NERDTreeCWD<CR>
-map <leader>m :JsDoc<CR>
+map <leader>d :JsDoc<CR>
 map <leader>q :q!<CR>
+map <leader>t :TagbarToggle<CR>
 
-nmap <leader>f :CtrlSF 
+nmap <leader>s :CtrlSF
+nmap <leader>af :FZF
+nmap <leader>f :GFiles
+nmap <leader>al :Lines<CR>
+nmap <leader>l :BLines<CR>
+nmap <leader>gs :GFiles?<CR>
+nmap <leader>m :Marks<CR>
+nmap <leader>w :Windows<CR>
+nmap <leader>b :Buffers<CR>
+
 nmap <silent>U :UndotreeToggle<CR>
 
 map <C-j> <C-w>j
@@ -69,6 +81,14 @@ imap <C-y>  <Esc>:redo<CR>
 call plug#begin('~/.vim/plugged')
 
 " 插件列表
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'majutsushi/tagbar'
+Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
+Plug 'darthmall/vim-vue'
+Plug 'scrooloose/vim-slumlord'
+Plug 'aklt/plantuml-syntax'
+Plug 'kannokanno/previm'
 Plug 'tpope/vim-sensible'
 Plug 'hotoo/pangu.vim'
 Plug 'asins/vimcdoc'
@@ -81,7 +101,6 @@ Plug 'tpope/vim-surround'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
-Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeCWD']}
 Plug 'lepture/vim-velocity'
 Plug 'airblade/vim-gitgutter'
@@ -109,6 +128,13 @@ Plug 'mitermayer/vim-prettier', {
     \ 'do': 'tnpm install', 
     \ 'for': ['javascript', 'css', 'less', 'scss'] }
 call plug#end()
+
+
+let g:tagbar_type_javascript = {
+\ 'ctagsbin' : 'jsctags'
+\ }
+
+let g:tagbar_left = 1
 
 " seoul256 主题配置
 let g:seoul256_background = 233
@@ -148,14 +174,6 @@ set completeopt=menu,menuone
 
 " YCM 配置
 let g:ycm_autoclose_preview_window_after_completion = 0
-
-" CTRL-P 配置
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_map = '<Leader>p'
-set wildignore+=*/.git/*,*/.svn/*,node_modules/*,
-let g:ctrlp_custom_ignore = {
-  \'dir':  '\v[\/](coverage|app/proxy|app/src|_dist|_package|node_modules)'
-\}
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -198,8 +216,8 @@ let g:tmuxline_preset = {
       \'status-justify': 'left'}
       \}
 
-" neovim也使用 en_US
-lan en_US
+" " neovim也使用 en_US
+" lan en_US
 
 " fasd 快速切换路径
 command! -nargs=* Z :call Z(<f-args>)
@@ -219,3 +237,7 @@ nmap <leader>z :Z
 
 vmap qq y:%s`<C-R>"``g<left><left>
 set guitablabel=%N/\ %t\ %M
+
+" previm配置
+let g:previm_open_cmd = "open"
+let g:previm_custom_css_path = '~/.style/mermaid.css'
