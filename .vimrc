@@ -27,6 +27,7 @@ set fdm=indent
 set foldlevelstart=99
 " 自动缩进
 set ai
+set autoread
 " 智能缩进
 set si
 " 全屏打开help
@@ -61,7 +62,8 @@ map <leader>t :TagbarToggle<CR>
 
 nmap <leader>s :CtrlSF
 nmap <leader>af :FZF
-nmap <leader>f :GFiles
+nmap <leader>f :GFiles<CR>
+nmap <leader>p :GFiles<CR>
 nmap <leader>al :Lines<CR>
 nmap <leader>l :BLines<CR>
 nmap <leader>gs :GFiles?<CR>
@@ -85,13 +87,12 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
-Plug 'darthmall/vim-vue'
+" Plug 'darthmall/vim-vue'
+Plug 'posva/vim-vue'
 Plug 'scrooloose/vim-slumlord'
-Plug 'aklt/plantuml-syntax'
 Plug 'kannokanno/previm'
 Plug 'tpope/vim-sensible'
 Plug 'hotoo/pangu.vim'
-Plug 'asins/vimcdoc'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
 Plug 'heavenshell/vim-jsdoc', {'for': ['javascript']}
@@ -120,7 +121,7 @@ Plug 'junegunn/goyo.vim'
 Plug '~/code/github/qin-sync'
 Plug 'dhruvasagar/vim-dotoo'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'rizzatti/dash.vim'
 Plug 'tpope/vim-repeat'
@@ -129,6 +130,9 @@ Plug 'mitermayer/vim-prettier', {
     \ 'for': ['javascript', 'css', 'less', 'scss'] }
 call plug#end()
 
+
+let g:prettier#config#semi = 'false'
+let g:prettier#config#bracket_spacing = 'false'
 
 let g:tagbar_type_javascript = {
 \ 'ctagsbin' : 'jsctags'
@@ -199,10 +203,10 @@ let g:airline_symbols.whitespace = 'Ξ'
 let g:undotree_WindowLayout = 3
 
 " EASY_MOTION 插件配置
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
+" map  / <Plug>(easymotion-sn)
+" omap / <Plug>(easymotion-tn)
+" map  n <Plug>(easymotion-next)
+" map  N <Plug>(easymotion-prev)
 nmap H gT
 nmap L gt
 
@@ -241,3 +245,6 @@ set guitablabel=%N/\ %t\ %M
 " previm配置
 let g:previm_open_cmd = "open"
 let g:previm_custom_css_path = '~/.style/mermaid.css'
+
+" vue 高亮
+autocmd FileType vue syntax sync fromstart
