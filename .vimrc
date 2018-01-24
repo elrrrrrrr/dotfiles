@@ -83,21 +83,20 @@ imap <C-y>  <Esc>:redo<CR>
 call plug#begin('~/.vim/plugged')
 
 " 插件列表
+Plug 'roxma/nvim-completion-manager'
+Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'panozzaj/vim-autocorrect'
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
-Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
-" Plug 'darthmall/vim-vue'
 Plug 'posva/vim-vue'
 Plug 'scrooloose/vim-slumlord'
 Plug 'kannokanno/previm'
 Plug 'tpope/vim-sensible'
 Plug 'hotoo/pangu.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
-Plug 'heavenshell/vim-jsdoc', {'for': ['javascript']}
-Plug 'othree/yajs.vim', {'for': ['javascript']}
-Plug 'scrooloose/syntastic', {'for': 'javascript'}
+Plug 'heavenshell/vim-jsdoc',
 Plug 'tpope/vim-surround'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -155,14 +154,6 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_ignore_files = ['[^\.js]$', '.\/node_modules\/.*']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = 'node_modules/.bin/eslint'
-
 " JSdoc 配置
 let g:jsdoc_additional_descriptions = 1
 let g:jsdoc_allow_input_prompt = 1
@@ -170,14 +161,6 @@ let g:jsdoc_return = 1
 let g:jsdoc_access_descriptions = 1
 let g:jsdoc_underscore_private = 1
 let g:jsdoc_enable_es6 = 1
-
-
-" 自动补全配置
-let g:scratch_top = 0
-set completeopt=menu,menuone
-
-" YCM 配置
-let g:ycm_autoclose_preview_window_after_completion = 0
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -248,3 +231,7 @@ let g:previm_custom_css_path = '~/.style/mermaid.css'
 
 " vue 高亮
 autocmd FileType vue syntax sync fromstart
+
+let g:deoplete#enable_at_startup = 1
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"

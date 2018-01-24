@@ -17,8 +17,8 @@ export TERM=xterm-256color
 
 # 配置快捷键
 [ -f /usr/local/bin/vim ] && alias vim="/usr/local/bin/vim"
-alias v="vim"
 alias n="nvim"
+alias v="n"
 alias vp="v package.json"
 alias np="n package.json"
 alias c="clear"
