@@ -10,6 +10,7 @@ zstyle ':prezto:load' pmodule \
   'history' \
   'history-substring-search' \
   'syntax-highlighting' \
+  'autosuggestions' \
   'git' \
   'directory' \
   'spectrum' \
@@ -32,3 +33,5 @@ zstyle ':prezto:module:prompt' theme 'cloud'
 # Tmux
 zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
+# 自动建议
+zstyle ':prezto:module:autosuggestions' color 'yes'

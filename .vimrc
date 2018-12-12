@@ -1,3 +1,4 @@
+lang en_US.UTF-8
 " gbk文件编码支持
 set fileencodings=ucs-bom,utf-8,euc-cn,cp936,default,latin1
 " 设置不兼容模式
@@ -42,8 +43,10 @@ set ttyfast
 " 高亮特殊字符
 set list
 set listchars=tab:>-,trail:-,extends:>,precedes:<
-
 set suffixesadd+=.vue,.js,.jsx
+set path=src
+" 保留页面底部留白
+set scrolloff=7
 
 " 自定义快捷键
 map ; :
@@ -70,6 +73,7 @@ nmap <leader>gs :GFiles?<CR>
 nmap <leader>m :Marks<CR>
 nmap <leader>w :Windows<CR>
 nmap <leader>b :Buffers<CR>
+nmap <leader>a :ALEToggle<CR>
 
 nmap <silent>U :UndotreeToggle<CR>
 
@@ -83,55 +87,77 @@ imap <C-y>  <Esc>:redo<CR>
 call plug#begin('~/.vim/plugged')
 
 " 插件列表
-Plug 'roxma/nvim-completion-manager'
-Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+Plug 'junegunn/vim-peekaboo'
+" Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
+" Plug 'rizzatti/dash.vim'
 Plug 'w0rp/ale'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'panozzaj/vim-autocorrect'
-Plug 'junegunn/fzf.vim'
-Plug 'majutsushi/tagbar'
-Plug 'posva/vim-vue'
-Plug 'scrooloose/vim-slumlord'
-Plug 'kannokanno/previm'
-Plug 'tpope/vim-sensible'
+
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-cssomni'
+Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
+Plug 'ncm2/ncm2-html-subscope'
+Plug 'ncm2/ncm2-markdown-subscope'
+Plug 'filipekiss/ncm2-look.vim'
+
+Plug 'Xuyuanp/nerdtree-git-plugin', {'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeCWD']}
+Plug 'arcticicestudio/nord-vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'bling/vim-airline'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'dhruvasagar/vim-dotoo'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'dyng/ctrlsf.vim'
+" Plug 'edkolev/tmuxline.vim'
+Plug 'heavenshell/vim-jsdoc',
 Plug 'hotoo/pangu.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'heavenshell/vim-jsdoc',
-Plug 'tpope/vim-surround'
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/tmuxline.vim'
-Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeCWD']}
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/seoul256.vim'
+Plug 'junegunn/vim-xmark', {'do': 'make', 'for': 'markdown'}
+Plug 'kannokanno/previm'
+Plug 'kshenoy/vim-signature'
 Plug 'lepture/vim-velocity'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-Plug 'Xuyuanp/nerdtree-git-plugin', {'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeCWD']}
-Plug 'tomtom/tcomment_vim'
-Plug 'dyng/ctrlsf.vim'
+Plug 'majutsushi/tagbar'
+Plug 'othree/csscomplete.vim'
+Plug 'panozzaj/vim-autocorrect'
+Plug 'posva/vim-vue'
 Plug 'rking/ag.vim'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'junegunn/vim-xmark', {'do': 'make', 'for': 'markdown'}
-Plug 'junegunn/vim-peekaboo'
-Plug 'kshenoy/vim-signature'
-Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
-Plug 't9md/vim-smalls'
-Plug 'junegunn/seoul256.vim'
-Plug 'junegunn/goyo.vim'
-Plug '~/code/github/qin-sync'
-Plug 'dhruvasagar/vim-dotoo'
-Plug 'christoomey/vim-tmux-navigator'
-" Plug 'easymotion/vim-easymotion'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'rizzatti/dash.vim'
+Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeCWD']}
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+" Plug 'vim-airline/vim-airline-themes'
+Plug '~/code/github/qin-sync'
+Plug 'pangloss/vim-javascript'
 Plug 'mitermayer/vim-prettier', {
-    \ 'do': 'tnpm install', 
-    \ 'for': ['javascript', 'css', 'less', 'scss'] }
+    \ 'do': 'tnpm install',
+    \ 'for': ['javascript', 'css', 'less', 'scss', 'markdown', 'json'] }
+
 call plug#end()
+
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
+let g:ncm2_look_enabled = 1
+
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\}
+let g:ale_fix_on_save = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
 
 
 let g:prettier#config#semi = 'false'
-let g:prettier#config#bracket_spacing = 'false'
 
 let g:tagbar_type_javascript = {
 \ 'ctagsbin' : 'jsctags'
@@ -139,20 +165,17 @@ let g:tagbar_type_javascript = {
 
 let g:tagbar_left = 1
 
-" seoul256 主题配置
-let g:seoul256_background = 233
-colo seoul256
+" " seoul256 主题配置
+" let g:seoul256_background = 233
+" colorscheme seoul256
+" highlight EndOfBuffer ctermfg=233 ctermbg=233
+colorscheme nord
 
 " snippets 配置
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<C-l>"
 let g:UltiSnipsJumpBackwardTrigger="<C-h>"
 let g:UltiSnipsEditSplit="vertical"
-
-" 代码风格配置
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
 " JSdoc 配置
 let g:jsdoc_additional_descriptions = 1
@@ -166,10 +189,10 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-" AIRLINE 主题
-let g:airline_theme = 'bubblegum'
-
-let g:airline_section_b = '%{airline#util#wrap(airline#extensions#branch#get_head(),0)}'
+" " AIRLINE 主题
+" let g:airline_theme = 'bubblegum'
+"
+" let g:airline_section_b = '%{airline#util#wrap(airline#extensions#branch#get_head(),0)}'
 
 
 " AIRLINE 状态栏标记
@@ -185,14 +208,6 @@ let g:airline_symbols.whitespace = 'Ξ'
 " UNDOTREE 插件配置
 let g:undotree_WindowLayout = 3
 
-" EASY_MOTION 插件配置
-" map  / <Plug>(easymotion-sn)
-" omap / <Plug>(easymotion-tn)
-" map  n <Plug>(easymotion-next)
-" map  N <Plug>(easymotion-prev)
-nmap H gT
-nmap L gt
-
 let g:tmuxline_preset = {
       \'win'    : ['#I', '#W'],
       \'cwin'    : ['#I', '#W'],
@@ -202,9 +217,6 @@ let g:tmuxline_preset = {
       \'options' : {
       \'status-justify': 'left'}
       \}
-
-" " neovim也使用 en_US
-" lan en_US
 
 " fasd 快速切换路径
 command! -nargs=* Z :call Z(<f-args>)
@@ -220,9 +232,11 @@ function! Z(...)
   endif
 endfunction
 
-nmap <leader>z :Z 
+nmap <leader>z :Z
 
-vmap qq y:%s`<C-R>"``g<left><left>
+vmap <leader>y "*y
+nmap <leader>d "_d
+vmap <leader>d "_d
 set guitablabel=%N/\ %t\ %M
 
 " previm配置
@@ -232,6 +246,10 @@ let g:previm_custom_css_path = '~/.style/mermaid.css'
 " vue 高亮
 autocmd FileType vue syntax sync fromstart
 
-let g:deoplete#enable_at_startup = 1
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+let g:prettier#exec_cmd_async = 1
+
+let g:cm_refresh_default_min_word_len=2
+let g:ctrlsf_ignore_dir = ['node_modules', 'source-map', 'test', 'public', 'offline_package', 'coverage', 'dist']
