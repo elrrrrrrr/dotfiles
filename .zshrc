@@ -18,13 +18,14 @@ export TERM=xterm-256color
 
 # 配置快捷键
 # [ -f /usr/local/bin/vim ] && alias vim="/usr/local/bin/vim"
-alias v="nvim"
 alias vim="v"
-alias vp="v package.json"
-alias np="n package.json"
 alias c="clear"
 alias gssh="luit -encoding gbk ssh"
 alias h="tldr"
+alias n="~/nvim-osx64/bin/nvim"
+alias v="~/nvim-osx64/bin/nvim"
+alias vp="v package.json"
+alias np="n package.json"
 
 # node 配置 nvm 太慢了
 export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/dist
@@ -49,3 +50,5 @@ export NVM_DIR="$HOME/.nvm"
 inclue "$HOME/.bash_profile"
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

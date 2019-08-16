@@ -34,4 +34,4 @@ zstyle ':prezto:module:prompt' theme 'cloud'
 zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
 # 自动建议
-zstyle ':prezto:module:autosuggestions' color 'yes'
+# zstyle ':prezto:module:autosuggestions' color 'yes'
