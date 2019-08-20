@@ -99,7 +99,7 @@ Plug 'segeljakt/vim-silicon'
 Plug 'chemzqm/vim-jsx-improve'
 Plug 'maxmellon/vim-jsx-pretty'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 " Plug 'ncm2/ncm2'
 " Plug 'ncm2/ncm2-tmux'
 " Plug 'ncm2/ncm2-bufword'
@@ -115,7 +115,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin', {'on': ['NERDTreeToggle', 'NERDTreeFind', 'N
 Plug 'arcticicestudio/nord-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
-Plug 'christoomey/vim-tmux-navigator'
+" Plug 'christoomey/vim-tmux-navigator'
 Plug 'dyng/ctrlsf.vim'
 " Plug 'edkolev/tmuxline.vim'
 Plug 'heavenshell/vim-jsdoc',
@@ -212,15 +212,15 @@ let g:airline_symbols.whitespace = 'Ξ'
 " UNDOTREE 插件配置
 let g:undotree_WindowLayout = 3
 
-let g:tmuxline_preset = {
-      \'win'    : ['#I', '#W'],
-      \'cwin'    : ['#I', '#W'],
-      \'x'    : '#(ipconfig getifaddr en0)',
-      \'y'    : ['%D'],
-      \'z'    : '%R',
-      \'options' : {
-      \'status-justify': 'left'}
-      \}
+" let g:tmuxline_preset = {
+"       \'win'    : ['#I', '#W'],
+"       \'cwin'    : ['#I', '#W'],
+"       \'x'    : '#(ipconfig getifaddr en0)',
+"       \'y'    : ['%D'],
+"       \'z'    : '%R',
+"       \'options' : {
+"       \'status-justify': 'left'}
+"       \}
 
 " fasd 快速切换路径
 command! -nargs=* Z :call Z(<f-args>)
