@@ -77,8 +77,6 @@ nmap <leader>s :CtrlSF
 " nmap <leader>b :Buffers<CR>
 nmap <leader>at :ALEToggle<CR>
 
-nmap <silent>U :UndotreeToggle<CR>
-
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-h> <C-w>h
@@ -90,39 +88,26 @@ call plug#begin('~/.vim/plugged')
 
 " 插件列表
 Plug 'junegunn/vim-peekaboo'
-" Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
-" Plug 'rizzatti/dash.vim'
 Plug 'w0rp/ale'
-
-Plug 'segeljakt/vim-silicon'
+Plug 'mhinz/vim-startify'
+Plug 'ryanoasis/vim-devicons'
 
 Plug 'chemzqm/vim-jsx-improve'
 Plug 'maxmellon/vim-jsx-pretty'
 
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
-" Plug 'ncm2/ncm2'
-" Plug 'ncm2/ncm2-tmux'
-" Plug 'ncm2/ncm2-bufword'
-"  Plug 'ncm2/ncm2-path'
-" Plug 'roxma/nvim-yarp'
-" Plug 'ncm2/ncm2-cssomni'
-" Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
-" Plug 'ncm2/ncm2-html-subscope'
-" Plug 'ncm2/ncm2-markdown-subscope'
-" Plug 'filipekiss/ncm2-look.vim'
-
 Plug 'Xuyuanp/nerdtree-git-plugin', {'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeCWD']}
 Plug 'arcticicestudio/nord-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
-" Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'dyng/ctrlsf.vim'
 " Plug 'edkolev/tmuxline.vim'
 Plug 'heavenshell/vim-jsdoc',
 Plug 'hotoo/pangu.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-xmark', {'do': 'make', 'for': 'markdown'}
@@ -141,6 +126,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'leafgarland/typescript-vim'
 " Plug 'vim-airline/vim-airline-themes'
 Plug '~/code/github/qin-sync'
 Plug 'pangloss/vim-javascript'
@@ -150,29 +136,10 @@ Plug 'mitermayer/vim-prettier', {
 
 call plug#end()
 
-" autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
-" let g:ncm2_look_enabled = 1
-
-"let g:ale_lint_on_text_changed = 'never'
-"let g:ale_lint_on_enter = 0
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['prettier', 'eslint'],
-\}
-" let g:ale_fix_on_save = 1
-" let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-" let g:ale_open_list = 1
-
+" set completeopt=noinsert,menuone,noselect
 
 let g:prettier#config#semi = 'false'
 let g:prettier#config#bracket_spacing = 'true'
-
-" " seoul256 主题配置
-" let g:seoul256_background = 233
-" colorscheme seoul256
-" highlight EndOfBuffer ctermfg=233 ctermbg=233
 colorscheme nord
 
 " snippets 配置
@@ -193,34 +160,6 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-" " AIRLINE 主题
-" let g:airline_theme = 'bubblegum'
-"
-" let g:airline_section_b = '%{airline#util#wrap(airline#extensions#branch#get_head(),0)}'
-
-
-" AIRLINE 状态栏标记
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.whitespace = 'Ξ'
-
-" UNDOTREE 插件配置
-let g:undotree_WindowLayout = 3
-
-" let g:tmuxline_preset = {
-"       \'win'    : ['#I', '#W'],
-"       \'cwin'    : ['#I', '#W'],
-"       \'x'    : '#(ipconfig getifaddr en0)',
-"       \'y'    : ['%D'],
-"       \'z'    : '%R',
-"       \'options' : {
-"       \'status-justify': 'left'}
-"       \}
 
 " fasd 快速切换路径
 command! -nargs=* Z :call Z(<f-args>)
@@ -245,7 +184,6 @@ set guitablabel=%N/\ %t\ %M
 
 " previm配置
 let g:previm_open_cmd = "open"
-let g:previm_custom_css_path = '~/.style/mermaid.css'
 
 " vue 高亮
 autocmd FileType vue syntax sync fromstart
@@ -296,23 +234,7 @@ nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -334,11 +256,6 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>fq  <Plug>(coc-fix-current)
 
-" Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
-
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
 
@@ -354,6 +271,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Using CocList
 " Show all diagnostics
 nnoremap <silent> <space>p  :<C-u>CocList files<cr>
+nnoremap <silent> <space>l  :<C-u>CocList lines<cr>
 nnoremap <silent> <space>m  :<C-u>CocList marks<cr>
 nnoremap <silent> <space>g  :<C-u>CocList grep<cr>
 nnoremap <silent> <space>c  :<C-u>CocList -A --normal yank<cr>
